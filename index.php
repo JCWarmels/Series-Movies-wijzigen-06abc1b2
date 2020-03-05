@@ -7,56 +7,56 @@ $passwd = "";
 $pdo = new PDO($dsn, $user, $passwd);
 $result_series = "";
 $result_films = "";
-if(isset($_GET['series_title'])){
-    if($_GET['series_title'] == 'ASC'){
+if(isset($_GET['series_title'])) {
+    if($_GET['series_title'] == 'ASC') {
         $result_series = $pdo->query("SELECT id, title, rating FROM series ORDER BY title ASC");
     }
     else {
         $result_series = $pdo->query("SELECT id, title, rating FROM series ORDER BY title DESC");
     }
 }
-if(isset($_GET['series_rating'])){
-    if($_GET['series_rating'] == 'ASC'){
+if(isset($_GET['series_rating'])) {
+    if($_GET['series_rating'] == 'ASC') {
         $result_series = $pdo->query("SELECT id, title, rating FROM series ORDER BY rating ASC");
     }
     else {
         $result_series = $pdo->query("SELECT id, title, rating FROM series ORDER BY rating DESC");
     }
 }
-if(isset($_GET['films_title'])){
-    if($_GET['films_title'] == 'ASC'){
+if(isset($_GET['films_title'])) {
+    if($_GET['films_title'] == 'ASC') {
         $result_films = $pdo->query("SELECT volgnummer, titel, duur_in_min FROM films ORDER BY titel ASC");
     }
     else {
         $result_films = $pdo->query("SELECT volgnummer, titel, duur_in_min FROM films ORDER BY titel DESC");
     }
 }
-if(isset($_GET['films_duration'])){
-    if($_GET['films_duration'] == 'ASC'){
+if(isset($_GET['films_duration'])) {
+    if($_GET['films_duration'] == 'ASC') {
         $result_films = $pdo->query("SELECT volgnummer, titel, duur_in_min FROM films ORDER BY duur_in_min ASC");
     }
     else {
         $result_films = $pdo->query("SELECT volgnummer, titel, duur_in_min FROM films ORDER BY duur_in_min DESC");
     }
 }
-if($result_series == ""){
+if($result_series == "") {
     $result_series = $pdo->query("SELECT id, title, rating FROM series");
 }
-if($result_films == ""){
+if($result_films == "") {
     $result_films = $pdo->query("SELECT volgnummer, titel, duur_in_min FROM films");
 }
 $remember_sort = "";
 $remember_sort2 = "";
-if(array_key_exists('series_title', $_GET)){
+if(array_key_exists('series_title', $_GET)) {
     $remember_sort = "&series_title=".$_GET['series_title'];
 }
-if(array_key_exists('series_rating', $_GET)){
+if(array_key_exists('series_rating', $_GET)) {
     $remember_sort = "&series_rating=".$_GET['series_rating'];
 }
-if(array_key_exists('films_title', $_GET)){
+if(array_key_exists('films_title', $_GET)) {
     $remember_sort2 = "&films_title=".$_GET['films_title'];
 }
-if(array_key_exists('films_duration', $_GET)){
+if(array_key_exists('films_duration', $_GET)) {
      $remember_sort2 = "&films_duration=".$_GET['films_duration'];
 }
 
